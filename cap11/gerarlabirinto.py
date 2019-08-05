@@ -17,7 +17,7 @@ class GerarLabirinto:
         celulas = array([(2*i +1, 2*j + 1) for i in range((dimensao -1) // 2)
                                            for j in range((dimensao -1) // 2)])
         celulas = (celulas[:,0], celulas[:,1])
-        self._mapa[celulas] = 1
+        self._mapa[celulas] = 255
         self._celulas = list(zip(celulas[0], celulas[1]))
         self._visitados = []
         self._caminhar(*choice(self._celulas))
@@ -39,10 +39,10 @@ class GerarLabirinto:
             if (xx, yy) not in self._visitados:
                 if x == xx:
                     yp = y + 1 if y - yy < 0 else y -1
-                    self._mapa[x, yp] = 1
+                    self._mapa[x, yp] = 255
                 if y == yy:
                     xp = x +1 if x - xx < 0 else x - 1
-                    self._mapa[xp, y] = 1
+                    self._mapa[xp, y] = 255
                 self._caminhar(xx, yy)
 
     def _cond(self, x, y):
