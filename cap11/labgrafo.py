@@ -101,9 +101,7 @@ class LabGrafo:
 
         def updatefig(frame):
             img = self._img.copy()
-            img[inicio] = 0
-            img[img == 0] = 255
-            img[img == -1] = 0
+            img[inicio] = 255
             img[i_fim, j_fim] = 200
             atl = self._nos[self.caminho[frame]]
             img[atl[0], atl[1]] = 100
