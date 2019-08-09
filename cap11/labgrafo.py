@@ -3,7 +3,7 @@
 '''
 Converte Labiritno em um grafo.
 '''
-from numpy import array, where, random, log
+from numpy import array, where, random
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, writers
 import networkx as nx
