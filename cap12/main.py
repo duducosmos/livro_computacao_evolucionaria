@@ -10,7 +10,7 @@ from pygenec.evolucao import Evolucao
 from pygenec import binarray2int
 
 from gerarlabirinto import GerarLabirinto
-from labgrafo import LabGrafo
+from labgrafogen import LabGrafoGen
 
 car_salv = input("Carregar ou Salvar [c/s]: ")
 filname = "./labirinto_grap.npy"
@@ -27,9 +27,7 @@ else:
 goal = (mapa.shape[0]- 2, mapa.shape[1]-5)
 startpoint = (1, 1)
 
-
-labgrafo = LabGrafo(mapa)
-
+labgrafo = LabGrafoGen(mapa)
 
 tamanho_populacao = 50
 cromossomos = len(labgrafo.nos)
