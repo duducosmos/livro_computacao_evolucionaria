@@ -3,9 +3,7 @@
 '''
 Converte Labiritno em um grafo.
 '''
-from numpy import array, where, random
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation, writers
+from numpy import array, where
 import networkx as nx
 
 
@@ -30,12 +28,6 @@ class LabGrafo:
         grafo.add_nodes_from(nome_nos)
         grafo.add_edges_from(vertices)
         return nos, nome_nos, grafo
-
-    def _no_correspondente(self, pos):
-        tmp = self._nos == pos
-        cond = (tmp[:,0] == True) & (tmp[:,1] == True)
-        nome_no = self._nome_nos[where(cond)[0][0]]
-        return nome_no
 
     @property
     def caminho(self):

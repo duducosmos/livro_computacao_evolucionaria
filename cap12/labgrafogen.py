@@ -4,7 +4,9 @@
 Estende a classe de representação de labirinto em grafo para adicionar
 avaliação de indivíduo vindo do algoritmo genético.
 '''
-
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation, writers
+from numpy import where
 from labgrafo import LabGrafo
 
 class LabGrafoGen(LabGrafo):
@@ -15,13 +17,19 @@ class LabGrafoGen(LabGrafo):
     def __init__(self, img):
         super(LabGrafoGen, self).__init__(img)
 
+    def no_correspondente(self, pos):
+        tmp = self.nos_ij == pos
+        cond = (tmp[:,0] == True) & (tmp[:,1] == True)
+        nome_no = self.nos[where(cond)[0][0]]
+        return nome_no
+
     def avaliacao(self, individuo, inicio, meta, upcaminho=True):
         '''
         Dado um indivíduo, verifica se o mesmo representa uma solução
         para o labirinto.
         '''
-        partida = self._no_correspondente(inicio)
-        fim = self._no_correspondente(meta)
+        partida = self.no_correspondente(inicio)
+        fim = self.no_correspondente(meta)
         caminho = [partida]
         atual = partida
         chegou = False
@@ -29,7 +37,7 @@ class LabGrafoGen(LabGrafo):
         i0 = 0
 
         while True:
-            possibilidades = {ng for ng in  self._grafo.neighbors(atual)}
+            possibilidades = {ng for ng in  self.grafo.neighbors(atual)}
             possibilidades = list(possibilidades - set(caminho))
             nposs = len(possibilidades)
             if nposs > 1:
@@ -54,7 +62,7 @@ class LabGrafoGen(LabGrafo):
             total = 1.0 / len(caminho)
 
         if upcaminho is True:
-            self._caminho = caminho
+            self.caminho = caminho
 
         return total
 
