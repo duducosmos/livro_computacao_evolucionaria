@@ -11,7 +11,6 @@ class LabGrafo:
     def __init__(self, img):
         self._img = img
         self._nos, self._nome_nos, self._grafo = self._criar_grafo()
-        self._caminho = None
 
     def _criar_grafo(self):
         '''
@@ -33,15 +32,7 @@ class LabGrafo:
         tmp = self._nos == pos
         cond = (tmp[:,0] == True) & (tmp[:,1] == True)
         nome_no = self._nome_nos[where(cond)[0][0]]
-        return nome_no
-
-    @property
-    def caminho(self):
-        return self._caminho
-
-    @caminho.setter
-    def caminho(self, caminho):
-        self._caminho = caminho
+        return nome_no    
 
     @property
     def nos(self):

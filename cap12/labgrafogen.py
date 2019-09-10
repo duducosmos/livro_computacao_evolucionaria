@@ -16,12 +16,17 @@ class LabGrafoGen(LabGrafo):
     '''
     def __init__(self, img):
         super(LabGrafoGen, self).__init__(img)
+        self._caminho = None
 
     def no_correspondente(self, pos):
         tmp = self.nos_ij == pos
         cond = (tmp[:,0] == True) & (tmp[:,1] == True)
         nome_no = self.nos[where(cond)[0][0]]
         return nome_no
+
+    @property
+    def caminho(self):
+        return self._caminho
 
     def avaliacao(self, individuo, inicio, meta, upcaminho=True):
         '''
@@ -62,7 +67,7 @@ class LabGrafoGen(LabGrafo):
             total = 1.0 / len(caminho)
 
         if upcaminho is True:
-            self.caminho = caminho
+            self._caminho = caminho
 
         return total
 
@@ -88,7 +93,7 @@ class LabGrafoGen(LabGrafo):
             img = self._img.copy()
             img[inicio] = 255
             img[i_fim, j_fim] = 200
-            atl = self._nos[self.caminho[frame]]
+            atl = self.nos_ij[self.caminho[frame]]
             img[atl[0], atl[1]] = 100
             if geracao is not None:
                 label = "Geração {}".format(geracao)
