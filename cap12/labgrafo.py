@@ -28,12 +28,6 @@ class LabGrafo:
         grafo.add_edges_from(vertices)
         return nos, nome_nos, grafo
 
-    def _no_correspondente(self, pos):
-        tmp = self._nos == pos
-        cond = (tmp[:,0] == True) & (tmp[:,1] == True)
-        nome_no = self._nome_nos[where(cond)[0][0]]
-        return nome_no    
-
     @property
     def nos(self):
         '''Retorna os nomes dos nós.'''
