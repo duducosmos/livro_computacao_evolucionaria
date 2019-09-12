@@ -18,8 +18,8 @@ class LabGrafo:
         Gera grafo a partir da matriz imagem, que representa o labirinto.
         Valores iguais a 0 indicam muro.
         '''
-        no_zeros = where(self._img != 0)
-        nos = list(zip(no_zeros[0], no_zeros[1]))
+        caminhos = where(self._img != 0)
+        nos = list(zip(caminhos[0], caminhos[1]))
         nnos = len(nos)
         nos = array(nos)
         vertices = LabGrafo.encontrar_vertices(nos)
